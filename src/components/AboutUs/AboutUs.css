@@ -1,0 +1,215 @@
+/* Estilos para el componente Sobre Nosotros */
+.about-us-full-height {
+  min-height: 90vh;
+  margin-bottom: auto;
+}
+.about-us {
+  padding: 5rem 0;
+  background-color: var(--color-bg-light);
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.about-image-container {
+  flex: 1;
+  position: relative;
+}
+
+.about-image-wrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-number {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.experience-text {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.about-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text-medium);
+  margin-bottom: 3rem;
+  max-width: 95%;
+  letter-spacing: 0.01em;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: space-between;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon-vertical {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.feature-icon-vertical::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15), transparent 70%);
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.feature-icon-vertical svg {
+  position: relative;
+  z-index: 2;
+  stroke-width: 1.5;
+  stroke: var(--color-accent);
+  font-size: 2.5rem;
+  fill: transparent;
+  filter: drop-shadow(0 0 2px rgba(190, 155, 123, 0.3));
+}
+
+/* Segundo tono para crear efecto duotono */
+.feature-icon-vertical svg path:nth-child(2),
+.feature-icon-vertical svg circle:nth-child(2) {
+  stroke: #d4af37; /* Oro más rico y elegante */
+  opacity: 0.7;
+}
+
+.feature-item:hover .feature-icon-vertical {
+  transform: scale(1.1);
+}
+
+.feature-item:hover .feature-icon-vertical svg {
+  stroke-width: 1.8;
+  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
+}
+
+.feature-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.feature-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-medium);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Medios responsivos */
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .about-content {
+    text-align: center;
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .experience-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 8px 8px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2rem;
+  }
+  
+  .about-image-container {
+    width: 100%;
+  }
+}
