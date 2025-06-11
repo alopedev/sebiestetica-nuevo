@@ -1,5 +1,5 @@
 import React from 'react';
-import { LuPencil, LuEye, LuPencilRuler, LuGraduationCap, LuSprout, LuPaintbrush, LuDna, LuHandMetal } from 'react-icons/lu';
+import { LuPencil, LuEye, LuPencilRuler, LuGraduationCap, LuSprout, LuPaintbrush, LuBrush, LuHandMetal, LuFootprints } from 'react-icons/lu';
 import './Tratamientos.css';
 
 const Tratamientos = () => {
@@ -37,21 +37,27 @@ const Tratamientos = () => {
     },
     {
       id: 6,
-      titulo: "Tinte de cejas y pestañas",
-      descripcion: "Dale color y definición a tus cejas y pestañas para lucir una mirada intensa sin necesidad de maquillaje.",
+      titulo: "Tinte y permanente de pestañas",
+      descripcion: "Consigue pestañas curvadas, con volumen y color duradero para una mirada intensa y expresiva sin necesidad de máscara.",
       icono: <LuPaintbrush />
     },
     {
       id: 7,
-      titulo: "Terapia de inducción de colágeno",
-      descripcion: "Tratamiento avanzado que estimula la renovación celular y la producción de colágeno para una piel más firme y rejuvenecida.",
-      icono: <LuDna />
+      titulo: "Tinte de cejas",
+      descripcion: "Intensifica el color de tus cejas para darles definición y un aspecto más poblado sin necesidad de maquillaje diario.",
+      icono: <LuBrush />
     },
     {
       id: 8,
       titulo: "Manicura",
       descripcion: "Cuidado completo para tus manos y uñas con técnicas profesionales y los mejores productos para un acabado perfecto y duradero.",
       icono: <LuHandMetal />
+    },
+    {
+      id: 9,
+      titulo: "Pedicura",
+      descripcion: "Tratamiento completo para el cuidado de tus pies, incluyendo exfoliación, hidratación y esmalte para un aspecto renovado y saludable.",
+      icono: <LuFootprints />
     }
   ];
 

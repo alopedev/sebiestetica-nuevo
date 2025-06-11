@@ -1,20 +1,23 @@
 /* Estilos para el componente Contact */
 
 .contact-section {
-  padding: 4rem 0 6rem;
+  padding: 6rem 0 8rem;
   background-color: var(--color-bg-light);
-  min-height: 85vh;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-container {
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 .contact-title {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: var(--color-primary);
   margin-bottom: 2.5rem;
   text-align: center;
@@ -29,31 +32,39 @@
   transform: translateX(-50%);
   width: 60px;
   height: 2px;
-  background: #FFCB44;
+  background: var(--color-accent, #FFCB44);
 }
 
 .contact-content {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  max-width: 1200px;
+  gap: 3.5rem;
+  max-width: 1300px;
   margin: 0 auto;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  align-items: center;
 }
 
 /* Estilos del mapa */
 .map-wrapper {
   width: 100%;
+  padding: 1rem 0;
+  max-width: 1200px;
 }
 
 .map-container {
   width: 100%;
-  height: 420px;
-  border-radius: 8px;
+  height: 450px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
   border: 1px solid rgba(190, 155, 123, 0.1);
+}
+
+.google-map {
+  width: 100%;
+  height: 100%;
 }
 
 .map-overlay {
@@ -111,51 +122,144 @@
   font-weight: 500;
 }
 
-/* Estilos para las tarjetas de información */
-.cards-container {
+/* Estilos para las tarjetas de contacto basadas en feature-items */
+.contact-features {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
   width: 100%;
+  margin-top: 3rem;
 }
 
-.contact-info-card {
+.contact-feature {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 1.5rem;
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 280px;
+  max-width: 380px;
+  padding: 1.5rem;
+  border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to right, rgba(190, 155, 123, 0.3), rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.5));
-  height: 100%;
+  background-color: var(--color-bg-light);
+  box-shadow: none;
+  position: relative;
+  z-index: 5;
 }
 
-.contact-info-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.contact-feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para las tarjetas de información */
+.cards-container {
+  display: none;
+}
+
+.contact-info-card {
+  display: none;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
+  background: linear-gradient(to bottom, #ffffff, #fffbf2);
   border-image-source: linear-gradient(to right, rgba(190, 155, 123, 0.5), rgba(212, 175, 55, 0.3), rgba(190, 155, 123, 0.5));
 }
 
-/* Estilo de iconos similar a Tratamientos */
+.card-decoration-line {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--color-accent, #FFCB44);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* Estilo de iconos duotono inspirados en Raycast/Linear */
+/* Estilos de los iconos para feature-items de contacto */
+.feature-icon-vertical {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.feature-icon-vertical::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15), transparent 70%);
+  opacity: 0.6;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.feature-icon-vertical svg {
+  position: relative;
+  z-index: 2;
+  stroke-width: 1.5;
+  stroke: var(--color-accent, #FFCB44);
+  font-size: 2.5rem;
+  fill: transparent;
+  filter: drop-shadow(0 0 2px rgba(190, 155, 123, 0.3));
+}
+
+.contact-feature:hover .feature-icon-vertical {
+  transform: scale(1.1);
+}
+
+.contact-feature:hover .feature-icon-vertical svg {
+  stroke-width: 1.8;
+  filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
+}
+
 .info-icon {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 242, 225, 0.5);
+  background: radial-gradient(circle, rgba(255, 242, 225, 0.7) 0%, rgba(255, 236, 200, 0.5) 70%, rgba(255, 230, 180, 0.3) 100%);
   border-radius: 50%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #be9b7b;
   font-size: 1.75rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+.duotone-icon {
+  position: relative;
+}
+
+.duotone-icon .icon-primary {
+  position: relative;
+  z-index: 2;
+  color: #be9b7b;
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 1px rgba(190, 155, 123, 0.3));
+}
+
+.duotone-icon .icon-secondary {
+  position: absolute;
+  z-index: 1;
+  color: #FFCB44;
+  stroke-width: 1.2;
+  opacity: 0.7;
+  transform: translate(1px, 1px);
 }
 
 .info-icon::before {
@@ -165,16 +269,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.15), transparent 60%);
+  background: radial-gradient(circle at center, rgba(255, 203, 68, 0.25), transparent 70%);
   z-index: 1;
 }
 
-.info-icon svg {
-  position: relative;
-  z-index: 2;
-  stroke-width: 1.5;
-  stroke: #be9b7b;
-  filter: drop-shadow(0 0 1px rgba(190, 155, 123, 0.3));
+/* Eliminar estilos antiguos que ya no se usan */
+.info-icon svg path:nth-child(2),
+.info-icon svg circle:nth-child(2),
+.info-icon svg line:nth-child(2) {
+  stroke: none;
 }
 
 .info-content {
@@ -182,7 +285,28 @@
   text-align: center;
 }
 
-.contact-info-card h3 {
+/* Estilos para los títulos y descripciones de las tarjetas */
+.feature-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.feature-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-medium);
+  max-width: 280px;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+}
+
+.info-content h3 {
   margin: 0;
   font-family: var(--font-heading);
   font-size: 1.4rem;
@@ -222,13 +346,17 @@
 }
 
 .phone-link {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  position: relative;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
   display: inline-block;
+  transition: color 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.phone-link:hover {
+  color: var(--color-accent);
 }
 
 .phone-link::after {
@@ -244,46 +372,64 @@
   transition: transform 0.3s ease;
 }
 
-.phone-link:hover {
-  color: var(--color-accent);
-}
-
 .phone-link:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-/* Estilos para enlaces sociales */
+.contact-note {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-medium);
+  margin: 0.75rem 0 1.5rem;
+  display: block;
+  letter-spacing: 0.01em;
+}
+
 .social-links {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1.2rem;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  width: 85%;
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
   text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  width: 170px;
+  text-align: center;
+}
+
+.social-link.link-button {
+  background-color: var(--color-accent);
   color: var(--color-primary);
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  position: relative;
-  padding: 0.4rem 0.6rem;
-  border-radius: 4px;
-  background-color: rgba(255, 242, 225, 0.3);
+  border: none;
+  box-shadow: none;
 }
 
-.social-link svg {
-  font-size: 1.1rem;
-  color: #FFCB44;
+.social-icon {
+  font-size: 1rem;
+  color: var(--color-primary);
 }
 
-.social-link:hover {
-  background-color: rgba(255, 242, 225, 0.8);
-  color: var(--color-accent);
+.social-link.link-button:hover {
+  background-color: var(--color-accent);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .call-time {
@@ -297,45 +443,87 @@
 .schedule-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  text-align: center;
+  align-items: center;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.schedule-feature .schedule-container {
+  width: 100%;
+  max-width: 280px;
 }
 
 .schedule-row {
   display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 0.4rem 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 0;
   border-bottom: 1px solid rgba(190, 155, 123, 0.1);
-  transition: all 0.2s ease;
 }
 
 .schedule-row:last-child {
   border-bottom: none;
 }
 
-.schedule-row:hover {
-  background-color: rgba(190, 155, 123, 0.02);
-  transform: translateX(3px);
-  padding-left: 3px;
-}
-
 .schedule-day {
+  font-family: var(--font-body);
   font-weight: 500;
+  font-size: 1rem;
   color: var(--color-primary);
-  font-size: 0.9rem;
+  letter-spacing: 0.01em;
 }
 
 .schedule-hours {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-medium);
+  letter-spacing: 0.01em;
+}
+
+/* Estilos para filas del horario */
+.schedule-row {
+  padding: 0.5rem 0;
+}
+
+.schedule-day {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.schedule-hours {
+  font-weight: 400;
   color: var(--color-text-medium);
   font-size: 0.9rem;
+}
+
+.schedule-hours.closed {
+  color: #e74c3c;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.closed-icon {
+  font-size: 0.9rem;
+  color: #e74c3c;
+}
+
+.appointment-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-text-medium);
+  margin-top: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.01em;
 }
 
 /* Estilos responsivos */
 @media (min-width: 768px) {
   .contact-content {
-    gap: 3rem;
+    gap: 4rem;
   }
 
   .map-container {
@@ -349,7 +537,12 @@
 
   .contact-info-card {
     flex: 1;
-    max-width: calc(50% - 1rem);
+    max-width: calc(50% - 1.5rem);
+  }
+
+  .info-icon {
+    width: 5.5rem;
+    height: 5.5rem;
   }
 }
 
@@ -357,15 +550,15 @@
   .contact-content {
     gap: 3rem;
   }
-  
+
   .contact-title {
     font-size: 2.4rem;
   }
-  
+
   .contact-info-card {
     transition: all 0.3s ease;
   }
-  
+
   .contact-info-container {
     padding-right: 1rem;
   }
@@ -373,27 +566,32 @@
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 3rem 0;
+    padding: 4rem 0 5rem;
   }
-  
+
   .contact-container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
   }
-  
+
   .contact-title {
     font-size: 2rem;
   }
-  
+
   .cards-container {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
-  
+
   .contact-info-card {
     width: 100%;
+    padding: 2rem 1.5rem;
   }
-  
-  .contact-info-card {
-    padding: 1.5rem;
+
+  /* Iconos más grandes en móvil para mantener impacto */
+  .info-icon {
+    width: 6rem;
+    height: 6rem;
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
   }
 }
