@@ -4,8 +4,8 @@
 /* Cooper Black webfont */
 @font-face {
   font-family: 'Cooper Black';
-  src: url('https://cdn.jsdelivr.net/npm/@fontsource/cooper-black@4.5.0/files/cooper-black-400.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/npm/@fontsource/cooper-black@4.5.0/files/cooper-black-400.woff') format('woff');
+  src: url('https://db.onlinewebfonts.com/t/03c8d0e410973e2a36774abc30ce7697.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/03c8d0e410973e2a36774abc30ce7697.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -48,6 +48,12 @@ body {
   color: var(--color-text-dark);
   background-color: var(--color-bg-light);
   letter-spacing: -0.01em;
+}
+
+/* Asegurar que la fuente Cooper Black se aplique */
+h1, h2, h3, .site-title {
+  font-family: var(--font-heading) !important;
+  font-weight: normal;
 }
 
 #root {
@@ -966,6 +972,10 @@ button {
     border: none;
     cursor: pointer;
     z-index: 110;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    margin-left: auto;
   }
 
   .hamburger-icon {
@@ -1007,8 +1017,8 @@ button {
     transition: right 0.3s ease;
     z-index: 100;
     padding-top: var(--header-height);
-    display: block; /* Cambiado de flex a block para mejor visualización */
-    overflow-y: auto; /* Permitir scroll si el menú es muy largo */
+    display: block;
+    overflow-y: auto;
   }
 
   .main-nav.open {
@@ -1016,12 +1026,13 @@ button {
   }
 
   .nav-links {
+    display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 0;
+    gap: 1.5rem;
     padding: 2rem;
-    display: block; /* Asegurar que se muestre como bloque */
-    position: relative; /* Asegurar que los enlaces se muestren */
+    margin: 0;
+    list-style-type: none;
   }
 
   .nav-links li {
