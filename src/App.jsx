@@ -2,14 +2,14 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // Componentes principales
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import Hero from './components/Hero/Hero'
-import Testimonials from './components/Testimonials/Testimonials'
-import Tratamientos from './components/Tratamientos/Tratamientos'
-import AboutUs from './components/AboutUs/AboutUs'
-import Contact from './components/Contact/Contact'
-import PageTransition from './components/transitions/PageTransition'
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Hero from './components/Hero/Hero';
+import Testimonials from './components/Testimonials/Testimonials';
+import Tratamientos from './components/Tratamientos/Tratamientos';
+import AboutUs from './components/AboutUs/AboutUs';
+import Contact from './components/Contact/Contact';
+import PageTransition from './components/transitions/PageTransition';
 
 function App() {
   return (

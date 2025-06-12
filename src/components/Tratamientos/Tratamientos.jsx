@@ -1,5 +1,6 @@
 import React from 'react';
 import { LuPencil, LuEye, LuPencilRuler, LuGraduationCap, LuSprout, LuPaintbrush, LuBrush, LuHandMetal, LuFootprints } from 'react-icons/lu';
+import ScrollAnimation from '../ScrollAnimation/ScrollAnimation';
 import './Tratamientos.css';
 
 const Tratamientos = () => {
@@ -64,10 +65,12 @@ const Tratamientos = () => {
   return (
     <section className="tratamientos" id="tratamientos">
       <div className="container">
-        <div className="tratamientos-title">
-          <h2>Nuestros Tratamientos</h2>
-          <p>Descubre nuestra amplia gama de tratamientos especializados para resaltar tu belleza natural.</p>
-        </div>
+        <ScrollAnimation animation="slide-up">
+          <div className="tratamientos-title">
+            <h2>Nuestros Tratamientos</h2>
+            <p>Descubre nuestra amplia gama de tratamientos especializados para resaltar tu belleza natural.</p>
+          </div>
+        </ScrollAnimation>
 
         <div className="tratamientos-grid">
           {tratamientos.map(tratamiento => {
@@ -78,14 +81,18 @@ const Tratamientos = () => {
             }
             
             return (
-              <div className={cardClass} key={tratamiento.id}>
+              <ScrollAnimation 
+                animation="fade-in" 
+                delay={(tratamiento.id % 3) * 100} 
+                className={cardClass} 
+                key={tratamiento.id}>
                 <div className="tratamiento-icon">
                   {tratamiento.icono}
                 </div>
                 <h3 className="tratamiento-title">{tratamiento.titulo}</h3>
                 <div className="tratamiento-separator"></div>
                 <p className="tratamiento-description">{tratamiento.descripcion}</p>
-              </div>
+              </ScrollAnimation>
             );
           })}
         </div>

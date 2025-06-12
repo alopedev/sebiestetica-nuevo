@@ -195,17 +195,19 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Component */
+/* Header Component - Glassmorphism Effect */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: white;
+  background-color: rgba(249, 249, 247, 0.8);
   z-index: 1000;
   padding: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Para soporte en Safari */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 

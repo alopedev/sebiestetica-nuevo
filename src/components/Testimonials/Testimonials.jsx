@@ -1,8 +1,9 @@
-import React from 'react'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import { LuQuote } from 'react-icons/lu'
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { LuQuote } from 'react-icons/lu';
+import ScrollAnimation from '../ScrollAnimation/ScrollAnimation';
 
 const Testimonials = () => {
   // Testimonios reales de clientes
@@ -80,16 +81,21 @@ const Testimonials = () => {
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">
-        <div className="testimonials-title">
-          <h2>Lo que dicen nuestros clientes</h2>
-          <p>Descubre las experiencias de clientes que han confiado en nuestros servicios</p>
-        </div>
-        
+        <ScrollAnimation animation="slide-up">
+          <div className="testimonials-title">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <p>Descubre las experiencias de clientes que han confiado en nuestros servicios</p>
+          </div>
+        </ScrollAnimation>
+
         <div className="testimonials-carousel">
           <Slider {...settings}>
-            {testimonials.map(testimonial => (
+            {testimonials.map((testimonial, index) => (
               <div className="testimonial-slide" key={testimonial.id}>
-                <div className="testimonial-card" key={testimonial.id}>
+                <ScrollAnimation
+                  animation="fade-in"
+                  delay={(index % 3) * 100}
+                  className="testimonial-card">
                   <div className="quote-icon">
                     <LuQuote />
                   </div>
@@ -103,9 +109,9 @@ const Testimonials = () => {
                       {testimonial.time}
                     </div>
                   </div>
-                  
+
                   <p className="testimonial-content">{testimonial.text}</p>
-                  
+
                   {/* Nueva estructura simplificada para el autor */}
                   <div className="testimonial-footer">
                     {/* Avatares personalizados con colores de marca */}
@@ -122,13 +128,13 @@ const Testimonials = () => {
                     ) : (
                       <div className="testimonial-avatar avatar-letter" style={{backgroundColor: '#e9cea5'}}>H</div>
                     )}
-                    
+
                     {/* Nombre recortado si es necesario */}
                     <div className="testimonial-name-container">
                       {testimonial.name}
                     </div>
                   </div>
-                </div>
+                </ScrollAnimation>
               </div>
             ))}
           </Slider>
