@@ -1,5 +1,6 @@
 import { Link, useLocation, NavLink } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+import logoImage from '../../assets/images/sebiestetica_Logo.webp'
 
 const Header = () => {
   const location = useLocation()
@@ -90,7 +91,7 @@ const Header = () => {
       <div className="header-inner">
         {/* Logo pequeño en extremo izquierdo */}
         <Link to="/" className="site-logo">
-          <h3 className="site-title">Sebiestetica</h3>
+          <img src={logoImage} alt="Sebiestetica" className="site-logo-img" />
         </Link>
 
         {/* Elementos exclusivos para móvil */}
