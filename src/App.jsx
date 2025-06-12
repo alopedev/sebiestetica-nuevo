@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-// Importamos framer-motion usando el nombre del paquete
 import { AnimatePresence } from 'framer-motion';
 
 // Componentes principales
@@ -23,7 +22,7 @@ function App() {
 // Componente interno que puede usar hooks de react-router
 function AppContent() {
   const location = useLocation();
-  
+
   return (
     <div className="app">
       {/* Header con navegación */}

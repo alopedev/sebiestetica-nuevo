@@ -1,11 +1,11 @@
 /* Importación de fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
 
-/* Cooper Black webfont */
+/* Cooper Black webfont - Local Files */
 @font-face {
   font-family: 'Cooper Black';
-  src: url('https://db.onlinewebfonts.com/t/03c8d0e410973e2a36774abc30ce7697.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/03c8d0e410973e2a36774abc30ce7697.woff') format('woff');
+  src: url('./assets/fonts/COOPBL.ttf') format('truetype'),
+       url('./assets/fonts/CooperFiveOpti-Black.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -25,14 +25,16 @@
   --color-bg-light: #ffffff;
   --color-bg-dark: #2f2f2f;
   --color-border: #e0e0e0;
-  
+
   /* Fuentes */
   --font-heading: 'Cooper Black', 'Arial Black', serif;
   --font-body: 'Instrument Sans', sans-serif;
-  
+
   /* Tamaños */
-  --header-height: 70px;
+  --header-height: 4rem;
   --max-width: 1200px;
+  --content-width: 1200px;
+  --section-spacing: 5rem;
 }
 
 /* Reset básico */
@@ -195,13 +197,21 @@ button {
 
 /* Header Component */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: var(--header-height);
-  position: sticky;
-  top: 0;
-  background-color: var(--color-bg);
-  z-index: 100;
+  background-color: white;
+  z-index: 1000;
   padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el header con scroll */
+.header-scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header-inner {
@@ -233,7 +243,7 @@ button {
 }
 
 .site-logo h3 {
-  font-family: var(--font-heading);
+  font-family: 'Cooper Black', serif !important;
   font-size: 1.3rem;
   color: var(--color-primary);
   font-weight: 700;
@@ -242,9 +252,85 @@ button {
   padding-top: 5px; /* Ajuste fino vertical */
 }
 
+/* Aplicación forzada de Cooper Black a títulos específicos */
+h1, h2, h3.site-title {
+  font-family: 'Cooper Black', 'Arial Black', serif !important;
+}
+
+/* Iconos para los enlaces del menú móvil */
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.nav-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .main-nav {
   display: flex;
   align-items: center;
+}
+
+/* Line Art Icons para los enlaces - Solo visibles en móvil por defecto */
+.tratamientos-icon {
+  display: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='%23ffcb45' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.sobre-mi-icon {
+  display: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='%23ffcb45' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+.contacto-icon {
+  display: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='%23ffcb45' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+/* Clases para diferenciar elementos móviles y desktop */
+.mobile-nav-item {
+  display: none;
+}
+
+.desktop-nav-item {
+  display: block;
+}
+
+/* Ocultar el botón de móvil en desktop */
+.mobile-menu-container {
+  display: none;
+}
+
+/* Botón de WhatsApp en header - estilo básico para desktop */
+.header-cta {
+  background-color: var(--color-accent);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: none; /* Oculto por defecto en desktop */
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header-cta svg {
+  color: var(--color-primary);
+}
+
+.header-whatsapp-button {
+  display: none;
 }
 
 .nav-links {
@@ -320,12 +406,90 @@ button {
 
 /* Estilos para pantallas menores de 768px */
 @media (max-width: 768px) {
-  .main-nav ul {
+  /* Mostrar el contenedor del menú móvil solo en versión móvil */
+  .mobile-menu-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-cta {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  /* Agregar soporte para botón con texto en móvil si es necesario */
+  .header-cta-text {
+    width: auto;
+    padding: 0;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .header-cta-text span {
+    display: none; /* Ocultar texto en botón en móvil */
+  }
+
+  .header-cta:hover {
+    background-color: #f5c030;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Estilos del menú móvil */
+  .nav-links {
     flex-direction: column;
-    padding: 0.5rem 0 0.5rem 1rem;
-    display: none;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    align-items: flex-start;
+    width: 100%;
   }
   
+  /* Mejorar alineación de elementos en menú móvil */
+  .mobile-nav-item a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  /* Intercambio de visibilidad entre elementos móviles y desktop */
+  .mobile-nav-item {
+    display: block;
+  }
+
+  .desktop-nav-item {
+    display: none;
+  }
+
+  /* Mostrar iconos en móvil */
+  .nav-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Asegurar que los iconos se muestren correctamente en móvil */
+  .tratamientos-icon,
+  .sobre-mi-icon,
+  .contacto-icon {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  /* Contenedor principal del menú móvil */
+  .main-nav.open {
+    background-color: #FDFBF5; /* Fondo crema para el menú */
+    width: 75%; /* Aumentado para evitar cortes de texto */
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  }
+
   .services-dropdown.active .dropdown-menu {
     display: flex;
   }
@@ -333,14 +497,77 @@ button {
   /* Transformación del botón de menú */
   .mobile-menu-button.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
+    background-color: var(--color-accent); /* Color amarillo de marca */
   }
-  
+
   .mobile-menu-button.active span:nth-child(2) {
     opacity: 0;
   }
-  
+
   .mobile-menu-button.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -8px);
+    background-color: var(--color-accent); /* Color amarillo de marca */
+  }
+
+  /* Estilo del icono hamburguesa */
+  .mobile-menu-button span {
+    height: 2px; /* Mayor grosor para las líneas */
+    background-color: var(--color-primary);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-button:hover span {
+    background-color: var(--color-accent); /* Color amarillo al pasar el mouse */
+  }
+
+  /* Estilo para el CTA de WhatsApp en el menú */
+  .menu-cta {
+    display: block;
+    background-color: #25D366; /* Color oficial de WhatsApp */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    margin: 20px auto;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    width: 85%;
+    transition: all 0.3s ease;
+  }
+
+  .menu-cta:hover {
+    background-color: #128C7E; /* Color más oscuro de WhatsApp al hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilo para iconos de redes sociales */
+  .menu-social {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    padding: 15px 0;
+  }
+
+  .menu-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .menu-social a:hover {
+    transform: translateY(-3px);
+  }
+
+  .menu-social svg {
+    fill: var(--color-primary);
+    transition: fill 0.3s ease;
+  }
+
+  .menu-social a:hover svg {
+    fill: var(--color-accent);
   }
 }
 
@@ -369,6 +596,21 @@ button {
   text-align: center;
   padding: 3rem 0 2rem;
   margin-bottom: 1rem;
+}
+
+/* Ajustar espaciado en móvil */
+@media (max-width: 768px) {
+  .main-logo {
+    padding: 0.5rem 0 1rem; /* Reducido aún más a 0.5rem arriba */
+  }
+
+  .logo-text {
+    font-size: 5rem; /* Texto más pequeño en móvil */
+  }
+
+  .hero {
+    margin-top: 60px; /* Reducido de 70px a 60px para acercar más al header */
+  }
 }
 
 .logo-text {
@@ -524,7 +766,7 @@ button {
   .logo-text {
     font-size: 4rem;
   }
-  
+
   .promo-seal {
     width: 90px;
     height: 90px;
@@ -535,11 +777,11 @@ button {
   .promo-text {
     font-size: 1.2rem;
   }
-  
+
   .promo-subtext {
     font-size: 0.8rem;
   }
-  
+
   .identity-title {
     font-size: 1.7rem;
   }
@@ -549,25 +791,25 @@ button {
   .logo-text {
     font-size: 3rem;
   }
-  
+
   .promo-badge {
     width: 80px;
     height: 80px;
     left: 5%;
   }
-  
+
   .promo-new {
     font-size: 0.6rem;
   }
-  
+
   .promo-discount {
     font-size: 0.9rem;
   }
-  
+
   .promo-text, .promo-code {
     font-size: 0.55rem;
   }
-  
+
   .identity-title {
     font-size: 1.4rem;
   }
@@ -848,7 +1090,7 @@ button {
   text-decoration: none;
   margin: 0 1rem;
   font-size: 0.85rem;
-  font-weight: 600; 
+  font-weight: 600;
   letter-spacing: 1px;
   padding-bottom: 5px;
   transition: all 0.2s ease;
@@ -956,7 +1198,7 @@ button {
   .footer-content {
     flex-direction: column;
   }
-  
+
   .footer-section {
     margin-bottom: 2rem;
   }
@@ -966,10 +1208,32 @@ button {
     position: relative;
   }
 
+  /* Mostrar el container del botón solo en móvil */
+  .mobile-menu-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 15px;
+  }
+
+  /* CTA WhatsApp visible en móvil */
+  .header-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #34C759; /* Color de WhatsApp */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
   .mobile-menu-btn {
     display: flex;
     background: none;
     border: none;
+    outline: none;
     cursor: pointer;
     z-index: 110;
     align-items: center;
@@ -989,9 +1253,10 @@ button {
   .hamburger-bar {
     display: block;
     width: 100%;
-    height: 2px;
-    background-color: var(--color-primary);
+    height: 3px; /* Línea más gruesa */
+    background-color: var(--color-accent); /* Color amarillo de marca */
     transition: all 0.3s ease;
+    border-radius: 2px; /* Bordes redondeados */
   }
 
   .hamburger-bar.open:nth-child(1) {
@@ -1010,9 +1275,9 @@ button {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 65%; /* Reducido de 80% a 65% */
     height: 100vh;
-    background-color: white;
+    background-color: #FDFBF5; /* Fondo crema más cálido */
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
     z-index: 100;
@@ -1021,8 +1286,27 @@ button {
     overflow-y: auto;
   }
 
+  /* Overlay para cerrar el menú */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    opacity: 0.5;
+  }
+
   .main-nav.open {
     right: 0;
+    display: block; /* Garantizamos que sea visible */
+  }
+
+  .nav-content {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0;
   }
 
   .nav-links {
@@ -1035,6 +1319,116 @@ button {
     list-style-type: none;
   }
 
+  /* Estilos específicos para enlaces en móvil */
+  .main-nav.open .nav-links {
+    display: flex !important;
+  }
+
+  /* Hacer los enlaces más grandes y visibles en móvil */
+  .main-nav.open .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.7rem 0 0.7rem 2rem; /* Más padding a la izquierda para iconos */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-weight: 500;
+    font-family: var(--font-body); /* Usar fuente sans-serif secundaria */
+    position: relative;
+  }
+
+  /* Iconos para los enlaces */
+  .nav-links a::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(0) saturate(100%) invert(75%) sepia(36%) saturate(763%) hue-rotate(356deg) brightness(103%) contrast(102%); /* Convertir a amarillo */
+  }
+
+  /* Icono para Tratamientos */
+  .nav-links a[href="/tratamientos"]::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="%23ffcb45" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  }
+
+  /* Icono para Sobre Mí */
+  .nav-links a[href="/sobre-mi"]::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>');
+  }
+
+  /* Icono para Contacto */
+  .nav-links a[href="/donde-estamos"]::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>');
+  }
+
+  /* Estilo para enlace activo */
+  .nav-links a.active {
+    color: var(--color-accent); /* Amarillo para enlace activo */
+    font-weight: 600;
+  }
+
+  /* CTA de WhatsApp en el menú */
+  .menu-cta {
+    display: block;
+    background-color: var(--color-accent);
+    color: var(--color-primary) !important;
+    text-align: center;
+    padding: 12px 20px;
+    margin: 30px 20px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .menu-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .menu-cta::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-45-194l236-142q14-8 22.5-22.5T702-469q0-16-9-30.5T671-521L435-653q-11-6-22.5-6.5T389-652q-18 10-28 26.5T351-584v294q0 20 10.5 34.5T389-238q10 5 22.5 2.5T435-274Z"/></svg>');
+    display: inline-block;
+    background-repeat: no-repeat;
+    filter: brightness(0) saturate(100%);
+    transform: rotate(0deg);
+  }
+
+  /* Footer social links */
+  .menu-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .menu-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+  }
+
+  .menu-social a:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
   .nav-links li {
     margin: 1rem 0;
     width: 100%;
@@ -1044,6 +1438,7 @@ button {
     padding: 0.75rem 0;
     display: block;
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 }

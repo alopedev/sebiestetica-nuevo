@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { LuPhone, LuClock, LuLock, LuMapPin } from 'react-icons/lu';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import './Contact.css';
