@@ -38,7 +38,8 @@ Dependencias relevantes: ver `package.json`.
 │  │  ├─ Tratamientos/...   # Página de tratamientos
 │  │  ├─ AboutUs/...        # Página "Sobre mí"
 │  │  ├─ Contact/...        # Página "Dónde estamos/Contacto"
-│  │  └─ transitions/PageTransition.jsx # Transición entre rutas
+│  │  ├─ transitions/PageTransition.jsx # Transición entre rutas
+│  │  └─ SEO/SEO.jsx        # Componente SEO ligero (title/meta/OG/Twitter/canonical)
 │  └─ hooks/                # Hooks reutilizables (p. ej., IntersectionObserver)
 └─ dist/                    # Salida de build (generada)
 ```
@@ -59,6 +60,7 @@ Dependencias relevantes: ver `package.json`.
   - `/donde-estamos`: muestra la página de contacto/localización.
   - `/servicios`: placeholder con texto simple (no principal).
 - `AnimatePresence` + `PageTransition` proporcionan animaciones entre cambios de ruta.
+ - SEO por ruta: se inyecta con el componente `SEO` (titular, meta description, Open Graph/Twitter y canonical) sin afectar la UI.
 
 3) Cabecera y navegación (`components/Header/Header.jsx`)
 - Logo con `alt` descriptivo enlazando a `/`.
@@ -106,9 +108,12 @@ npm run preview
 - Las animaciones de `framer-motion` están encapsuladas en `PageTransition` para mantener las páginas limpias.
 
 ## Notas sobre SEO (estado actual)
-- Título general definido en `index.html`.
-- Aún no se gestiona `<title>`/`<meta>` por ruta. No hay `sitemap.xml` ni `robots.txt` en `public/`.
-- Próximas mejoras sugeridas: `react-helmet-async`, metadatos OG/Twitter por página, `robots.txt`, `sitemap.xml` y marcado `LocalBusiness`.
+- `index.html`: contiene `meta name="description"` global y `meta name="theme-color"`.
+- SEO por ruta activo con `src/components/SEO/SEO.jsx` (title, meta description, Open Graph, Twitter Card y canonical) integrado en `App.jsx` para `/`, `/tratamientos`, `/sobre-mi`, `/donde-estamos`.
+- Archivos de rastreo creados en `public/`:
+  - `robots.txt` permitiendo indexación y referenciando el sitemap.
+  - `sitemap.xml` con rutas principales del sitio.
+- Marcado estructurado añadido: JSON‑LD `LocalBusiness` en `index.html` con dirección, teléfono, horarios y perfiles sociales.
 
 ---
 

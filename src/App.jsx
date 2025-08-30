@@ -10,6 +10,7 @@ import Tratamientos from './components/Tratamientos/Tratamientos';
 import AboutUs from './components/AboutUs/AboutUs';
 import Contact from './components/Contact/Contact';
 import PageTransition from './components/transitions/PageTransition';
+import SEO from './components/SEO/SEO';
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function AppContent() {
             <Route path="/" element={
               <PageTransition>
                 <>
+                  <SEO
+                    title="Sebiestetica | Centro de belleza en Reus"
+                    description="Centro de belleza en Reus: tratamientos faciales y corporales, depilación y bienestar. Pide tu cita por WhatsApp al +34 677 412 424."
+                    canonical="https://sebiestetica.windsurf.build/"
+                  />
                   <Hero />
                   <Testimonials />
                 </>
@@ -41,7 +47,14 @@ function AppContent() {
             } />
             <Route path="/tratamientos" element={
               <PageTransition>
-                <Tratamientos />
+                <>
+                  <SEO
+                    title="Tratamientos | Sebiestetica"
+                    description="Tratamientos de estética en Reus: faciales, corporales y depilación. Asesoramiento personalizado."
+                    canonical="https://sebiestetica.windsurf.build/tratamientos"
+                  />
+                  <Tratamientos />
+                </>
               </PageTransition>
             } />
             <Route path="/servicios" element={
@@ -51,12 +64,26 @@ function AppContent() {
             } />
             <Route path="/sobre-mi" element={
               <PageTransition>
-                <AboutUs />
+                <>
+                  <SEO
+                    title="Sobre mí | Sebiestetica"
+                    description="Conoce a la profesional detrás de Sebiestetica en Reus: experiencia, filosofía y trato cercano."
+                    canonical="https://sebiestetica.windsurf.build/sobre-mi"
+                  />
+                  <AboutUs />
+                </>
               </PageTransition>
             } />
             <Route path="/donde-estamos" element={
               <PageTransition>
-                <Contact />
+                <>
+                  <SEO
+                    title="Dónde estamos | Sebiestetica"
+                    description="Contacto de Sebiestetica en Reus: dirección, horarios y WhatsApp para citas."
+                    canonical="https://sebiestetica.windsurf.build/donde-estamos"
+                  />
+                  <Contact />
+                </>
               </PageTransition>
             } />
           </Routes>
