@@ -115,6 +115,42 @@ npm run preview
   - `sitemap.xml` con rutas principales del sitio.
 - Marcado estructurado añadido: JSON‑LD `LocalBusiness` en `index.html` con dirección, teléfono, horarios y perfiles sociales.
 
+## Convenciones para SEO por ruta
+
+- __Componente__: `src/components/SEO/SEO.jsx`
+- __Props soportadas__:
+  - `title: string` → establece `<title>` y `og:title`, `twitter:title`.
+  - `description: string` → establece `meta description`, `og:description`, `twitter:description`.
+  - `image?: string` → URL absoluta para `og:image` y `twitter:image` (recomendado 1200x630).
+  - `canonical?: string` → establece `link[rel=canonical]`. Si no se pasa, usa `location.origin + pathname`.
+  - `type?: 'website' | 'article'` → por defecto `website` (mapea a `og:type`).
+
+### Ejemplos de uso
+
+Home (`/`):
+```jsx
+<SEO
+  title="Sebiestetica | Centro de belleza en Reus"
+  description="Centro de belleza en Reus: tratamientos faciales y corporales, depilación y bienestar. Pide tu cita por WhatsApp al +34 677 412 424."
+  canonical="https://sebiestetica.windsurf.build/"
+  // image="https://sebiestetica.windsurf.build/og/home.jpg"
+/>
+```
+
+Tratamientos (`/tratamientos`):
+```jsx
+<SEO
+  title="Tratamientos | Sebiestetica"
+  description="Tratamientos de estética en Reus: faciales, corporales y depilación. Asesoramiento personalizado."
+  canonical="https://sebiestetica.windsurf.build/tratamientos"
+/>
+```
+
+Sugerencias:
+- Mantener títulos < 60 caracteres y descriptions 150–160.
+- Usar URLs absolutas para `image`.
+- Si migras a dominio propio, actualizar `canonical` en cada ruta.
+
 ---
 
 Última actualización: 2025-08-30

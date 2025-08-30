@@ -83,7 +83,12 @@ const Header = () => {
 
   // Abrir WhatsApp con mensaje predefinido
   const openWhatsApp = () => {
-    window.open('https://wa.me/+34677412424?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Sebiestetica', '_blank')
+    const win = window.open(
+      'https://wa.me/+34677412424?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Sebiestetica',
+      '_blank',
+      'noopener,noreferrer'
+    )
+    if (win) win.opener = null
   }
 
   return (
