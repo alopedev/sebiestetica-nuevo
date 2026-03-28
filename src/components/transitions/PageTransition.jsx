@@ -5,7 +5,6 @@ const PageTransition = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Trigger enter animation on mount
     const frame = requestAnimationFrame(() => setIsVisible(true))
     return () => cancelAnimationFrame(frame)
   }, [])

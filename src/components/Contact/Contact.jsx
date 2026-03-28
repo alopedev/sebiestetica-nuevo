@@ -1,33 +1,32 @@
 import { LuPhone, LuClock, LuLock, LuMapPin } from 'react-icons/lu';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { PHONE, ADDRESS, SCHEDULE, SOCIAL } from '../../data/siteConfig';
 import './Contact.css';
 
-const Contact = () => {
-  const contactData = {
-    address: {
-      icon: <LuMapPin />,
-      title: 'Ubicación',
-      description: ADDRESS.full
-    },
-    schedule: {
-      icon: <LuClock />,
-      title: 'Horario',
-      data: SCHEDULE
-    },
-    phone: {
-      icon: <LuPhone />,
-      title: 'Contacto',
-      phone: PHONE.landlineDisplay,
-      note: 'Atención telefónica en horario comercial'
-    }
-  };
+const contactData = {
+  address: {
+    icon: <LuMapPin />,
+    title: 'Ubicación',
+    description: ADDRESS.full,
+  },
+  schedule: {
+    icon: <LuClock />,
+    title: 'Horario',
+    data: SCHEDULE,
+  },
+  phone: {
+    icon: <LuPhone />,
+    title: 'Contacto',
+    phone: PHONE.landlineDisplay,
+    note: 'Atención telefónica en horario comercial',
+  },
+};
 
+const Contact = () => {
   return (
     <section className="contact-section" id="contacto">
       <div className="contact-container">
         <h2 className="contact-title">Dónde Encontrarnos</h2>
-        
+
         <div className="contact-content">
           <div className="map-wrapper">
             <div className="map-container">
@@ -47,7 +46,6 @@ const Contact = () => {
           </div>
 
           <div className="features-container contact-features">
-            {/* Tarjeta de ubicación */}
             <div className="feature-item contact-feature">
               <div className="feature-icon-vertical">
                 {contactData.address.icon}
@@ -56,7 +54,6 @@ const Contact = () => {
               <p className="feature-description">{contactData.address.description}</p>
             </div>
 
-            {/* Tarjeta de horario */}
             <div className="feature-item contact-feature schedule-feature">
               <div className="feature-icon-vertical">
                 {contactData.schedule.icon}
@@ -79,7 +76,6 @@ const Contact = () => {
               </div>
             </div>
             
-            {/* Tarjeta de contacto */}
             <div className="feature-item contact-feature">
               <div className="feature-icon-vertical">
                 {contactData.phone.icon}

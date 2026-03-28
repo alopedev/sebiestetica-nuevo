@@ -13,6 +13,7 @@ export const useIntersectionObserver = (options = {}) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
+    if (isVisible) return;
     const element = elementRef.current;
     if (!element) return;
 
@@ -34,7 +35,7 @@ export const useIntersectionObserver = (options = {}) => {
     return () => {
       if (element) observer.unobserve(element);
     };
-  }, [options.threshold, options.root, options.rootMargin]);
+  }, [isVisible, options.threshold, options.root, options.rootMargin]);
 
   return [elementRef, isVisible];
 };

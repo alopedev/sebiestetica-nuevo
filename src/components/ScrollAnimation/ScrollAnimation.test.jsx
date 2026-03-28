@@ -2,11 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import ScrollAnimation from './ScrollAnimation'
 
-let mockCallback
-
 beforeEach(() => {
-  global.IntersectionObserver = vi.fn(function (callback) {
-    mockCallback = callback
+  global.IntersectionObserver = vi.fn(function () {
     this.observe = vi.fn()
     this.unobserve = vi.fn()
     this.disconnect = vi.fn()
