@@ -1,4 +1,3 @@
-import React from 'react';
 import { LuPencil, LuEye, LuPencilRuler, LuGraduationCap, LuSprout, LuPaintbrush, LuBrush, LuHandMetal, LuFootprints } from 'react-icons/lu';
 import ScrollAnimation from '../ScrollAnimation/ScrollAnimation';
 import './Tratamientos.css';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { LuAward, LuUsers, LuSparkles } from 'react-icons/lu';
 import './AboutUs.css';
 import treatmentImage from '../../assets/images/handsOn.webp';

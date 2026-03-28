@@ -1,6 +1,6 @@
-import React from 'react';
 import { LuPhone, LuClock, LuLock, LuMapPin } from 'react-icons/lu';
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { PHONE, ADDRESS, SCHEDULE, SOCIAL } from '../../data/siteConfig';
 import './Contact.css';
 
 const Contact = () => {
@@ -8,25 +8,17 @@ const Contact = () => {
     address: {
       icon: <LuMapPin />,
       title: 'Ubicación',
-      description: 'Carrer de Xavier Gambús, 1, 43202 Reus, Tarragona'
+      description: ADDRESS.full
     },
     schedule: {
       icon: <LuClock />,
       title: 'Horario',
-      data: [
-        { day: 'Lunes', hours: '16:00-20:00' },
-        { day: 'Martes', hours: '10:00-13:00, 16:00-20:00' },
-        { day: 'Miércoles', hours: '10:00-13:00, 16:00-20:00' },
-        { day: 'Jueves', hours: '10:00-13:00, 16:00-20:00' },
-        { day: 'Viernes', hours: '10:00-13:00, 16:00-20:00' },
-        { day: 'Sábado', hours: '10:00-14:00' },
-        { day: 'Domingo', hours: 'Cerrado', closed: true }
-      ]
+      data: SCHEDULE
     },
     phone: {
       icon: <LuPhone />,
       title: 'Contacto',
-      phone: '977 33 38 69',
+      phone: PHONE.landlineDisplay,
       note: 'Atención telefónica en horario comercial'
     }
   };
@@ -94,14 +86,14 @@ const Contact = () => {
               </div>
               <h3 className="feature-title">{contactData.phone.title}</h3>
               <p className="feature-description">
-                <a href="tel:+34977333869" className="phone-link">{contactData.phone.phone}</a>
+                <a href={PHONE.landlineTel} className="phone-link">{contactData.phone.phone}</a>
                 <span className="contact-note">{contactData.phone.note}</span>
               </p>
               <div className="social-links">
-                <a href="https://www.facebook.com/SebiEstetica/" target="_blank" rel="noopener noreferrer" className="link-button">
+                <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="link-button">
                   Facebook
                 </a>
-                <a href="https://www.instagram.com/explore/locations/1035209578/sebi-estetica/?locale=es_ES/" target="_blank" rel="noopener noreferrer" className="link-button">
+                <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="link-button">
                   Instagram
                 </a>
               </div>

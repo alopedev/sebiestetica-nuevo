@@ -1,33 +1,31 @@
 import { Link, useLocation, NavLink } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+import { PHONE, SOCIAL } from '../../data/siteConfig'
 import logoImage from '../../assets/images/sebiestetica_Logo.webp'
+import './Header.css'
 
 const Header = () => {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const menuRef = useRef(null)
   const menuBtnRef = useRef(null)
 
-  // Prevenir scroll cuando el menú está abierto
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto'
     }
     return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [menuOpen]);
+      document.body.style.overflow = 'auto'
+    }
+  }, [menuOpen])
 
-  // Cerrar el menú cuando se cambia de ruta
   useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
+    setMenuOpen(false)
+  }, [location.pathname])
 
-  // Cerrar menú al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuOpen &&
@@ -35,73 +33,41 @@ const Header = () => {
           !menuRef.current.contains(event.target) &&
           menuBtnRef.current &&
           !menuBtnRef.current.contains(event.target)) {
-        setMenuOpen(false);
+        setMenuOpen(false)
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [menuOpen]);
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [menuOpen])
 
-  // Detectar scroll para aplicar sombra
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+      setScrolled(window.scrollY > 10)
+    }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
-  // Detectar si es dispositivo móvil para mostrar/ocultar elementos
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    // Verificar inicialmente
-    checkIfMobile();
-
-    // Escuchar cambios de tamaño
-    window.addEventListener('resize', checkIfMobile);
-    return () => {
-      window.removeEventListener('resize', checkIfMobile);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
-  }
-
-  // Abrir WhatsApp con mensaje predefinido
   const openWhatsApp = () => {
-    const win = window.open(
-      'https://wa.me/+34677412424?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Sebiestetica',
-      '_blank',
-      'noopener,noreferrer'
-    )
+    const win = window.open(PHONE.whatsappUrl, '_blank', 'noopener,noreferrer')
     if (win) win.opener = null
   }
 
   return (
     <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
+      <a href="#main" className="skip-to-content">Saltar al contenido</a>
       <div className="header-inner">
-        {/* Logo pequeño en extremo izquierdo */}
         <Link to="/" className="site-logo">
           <img src={logoImage} alt="Sebiestetica" className="site-logo-img" />
         </Link>
 
-        {/* Elementos exclusivos para móvil */}
         <div className="mobile-menu-container">
-          {/* Botón WhatsApp fijo - Solo para móvil */}
           <button
             className="header-cta"
             onClick={openWhatsApp}
@@ -112,13 +78,13 @@ const Header = () => {
             </svg>
           </button>
 
-          {/* Botón de menú hamburguesa */}
           <button
             className="mobile-menu-btn"
             ref={menuBtnRef}
-            onClick={toggleMenu}
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menú de navegación"
             aria-expanded={menuOpen}
+            aria-controls="main-nav"
           >
             <span className="hamburger-icon">
               <span className={`hamburger-bar ${menuOpen ? 'open' : ''}`}></span>
@@ -128,74 +94,49 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Overlay para cerrar el menú al hacer clic fuera */}
         {menuOpen && <div className="menu-overlay" onClick={() => setMenuOpen(false)}></div>}
 
-        {/* Menú de navegación en extremo derecho */}
-        <nav className={`main-nav ${menuOpen ? 'open' : ''}`} ref={menuRef}>
+        <nav id="main-nav" className={`main-nav ${menuOpen ? 'open' : ''}`} ref={menuRef}>
           <div className="nav-content">
             <ul className="nav-links">
-              <li className="mobile-nav-item">
+              <li>
                 <NavLink to="/tratamientos" className={({ isActive }) => isActive ? 'active' : ''}>
                   TRATAMIENTOS
                 </NavLink>
               </li>
-              <li className="mobile-nav-item">
+              <li>
                 <NavLink to="/sobre-mi" className={({ isActive }) => isActive ? 'active' : ''}>
                   SOBRE MÍ
                 </NavLink>
               </li>
-              <li className="mobile-nav-item">
-                <NavLink to="/donde-estamos" className={({ isActive }) => isActive ? 'active' : ''}>
-                  CONTACTO
-                </NavLink>
-              </li>
-
-              {/* Enlaces desktop - sin iconos */}
-              <li className="desktop-nav-item">
-                <NavLink to="/tratamientos" className={({ isActive }) => isActive ? 'active' : ''}>
-                  TRATAMIENTOS
-                </NavLink>
-              </li>
-              <li className="desktop-nav-item">
-                <NavLink to="/sobre-mi" className={({ isActive }) => isActive ? 'active' : ''}>
-                  SOBRE MÍ
-                </NavLink>
-              </li>
-              <li className="desktop-nav-item">
+              <li>
                 <NavLink to="/donde-estamos" className={({ isActive }) => isActive ? 'active' : ''}>
                   CONTACTO
                 </NavLink>
               </li>
             </ul>
 
-            {/* CTA de WhatsApp en el menú - Solo en móvil */}
-            {isMobile && (
-              <a
-                href="https://wa.me/+34677412424?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Sebiestetica"
-                className="menu-cta"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Contactar por WhatsApp
-              </a>
-            )}
+            <a
+              href={PHONE.whatsappUrl}
+              className="menu-cta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contactar por WhatsApp
+            </a>
 
-            {/* Iconos de redes sociales - Solo en móvil */}
-            {isMobile && (
-              <div className="menu-social">
-                <a href="https://www.instagram.com/explore/locations/1035209578/sebi-estetica/?locale=es_ES/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2f2f2f">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-                <a href="https://www.facebook.com/SebiEstetica/?locale=es_ES" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2f2f2f">
-                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                  </svg>
-                </a>
-              </div>
-            )}
+            <div className="menu-social">
+              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2f2f2f">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2f2f2f">
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </nav>
       </div>
