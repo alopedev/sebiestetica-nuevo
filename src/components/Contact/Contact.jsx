@@ -1,6 +1,5 @@
-import React from 'react';
 import { LuPhone, LuClock, LuLock, LuMapPin } from 'react-icons/lu';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FACEBOOK_URL, INSTAGRAM_URL, PHONE_URL, PHONE_DISPLAY } from '../../constants/links';
 import './Contact.css';
 
 const Contact = () => {
@@ -26,7 +25,7 @@ const Contact = () => {
     phone: {
       icon: <LuPhone />,
       title: 'Contacto',
-      phone: '977 33 38 69',
+      phone: PHONE_DISPLAY,
       note: 'Atención telefónica en horario comercial'
     }
   };
@@ -94,14 +93,14 @@ const Contact = () => {
               </div>
               <h3 className="feature-title">{contactData.phone.title}</h3>
               <p className="feature-description">
-                <a href="tel:+34977333869" className="phone-link">{contactData.phone.phone}</a>
+                <a href={PHONE_URL} className="phone-link">{contactData.phone.phone}</a>
                 <span className="contact-note">{contactData.phone.note}</span>
               </p>
               <div className="social-links">
-                <a href="https://www.facebook.com/SebiEstetica/" target="_blank" rel="noopener noreferrer" className="link-button">
+                <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="link-button">
                   Facebook
                 </a>
-                <a href="https://www.instagram.com/explore/locations/1035209578/sebi-estetica/?locale=es_ES/" target="_blank" rel="noopener noreferrer" className="link-button">
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="link-button">
                   Instagram
                 </a>
               </div>

@@ -1,0 +1,131 @@
+/* Hero Component */
+.hero {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-light);
+  margin-top: 70px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  border-top: none;
+  overflow: visible;
+}
+
+.hero-container {
+  position: relative;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto 4rem;
+}
+
+.main-logo {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  margin-bottom: 1rem;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.logo-text sup {
+  font-size: 1.5rem;
+  vertical-align: top;
+  position: relative;
+  top: 0.5rem;
+}
+
+/* Hero image */
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.hero-image-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Identity section below hero image */
+.identity-section {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 3rem auto 5rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.identity-subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-medium);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.identity-title {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  max-width: 750px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.3;
+}
+
+.identity-description {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    margin-top: 60px;
+  }
+
+  .main-logo {
+    padding: 0.5rem 0 1rem;
+  }
+
+  .logo-text {
+    font-size: 4rem;
+  }
+
+  .identity-title {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 3rem;
+  }
+
+  .identity-title {
+    font-size: 1.4rem;
+  }
+}

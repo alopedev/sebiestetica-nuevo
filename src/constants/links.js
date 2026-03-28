@@ -1,0 +1,5 @@
+export const WHATSAPP_URL = 'https://wa.me/+34677412424?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Sebiestetica'
+export const INSTAGRAM_URL = 'https://www.instagram.com/explore/locations/1035209578/sebi-estetica/?locale=es_ES/'
+export const FACEBOOK_URL = 'https://www.facebook.com/SebiEstetica/'
+export const PHONE_URL = 'tel:+34977333869'
+export const PHONE_DISPLAY = '977 33 38 69'

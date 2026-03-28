@@ -1,4 +1,7 @@
-import React from 'react'
+import { FaFacebookF, FaInstagram } from 'react-icons/fa'
+import { LuPhone } from 'react-icons/lu'
+import { FACEBOOK_URL, INSTAGRAM_URL, PHONE_URL } from '../../constants/links'
+import './Footer.css'
 
 const Footer = () => {
   return (
@@ -10,14 +13,14 @@ const Footer = () => {
           </div>
 
           <div className="footer-social">
-            <a href="https://www.facebook.com/SebiEstetica/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <i className="fa-brands fa-facebook-f"></i>
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebookF />
             </a>
-            <a href="https://www.instagram.com/explore/locations/1035209578/sebi-estetica/?locale=es_ES/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <i className="fa-brands fa-instagram"></i>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram />
             </a>
-            <a href="tel:+34977333869" aria-label="Teléfono">
-              <i className="fa-solid fa-phone"></i>
+            <a href={PHONE_URL} aria-label="Teléfono">
+              <LuPhone />
             </a>
           </div>
         </div>
