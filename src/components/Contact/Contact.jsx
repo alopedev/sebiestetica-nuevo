@@ -39,6 +39,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin"
                 title="Ubicación de Sebiestetica"
                 className="google-map"
               ></iframe>
