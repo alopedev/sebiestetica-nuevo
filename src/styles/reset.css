@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 1rem;
 }
 
-h1, h2, h3, .site-title {
+h1, h2, h3 {
   font-family: var(--font-heading) !important;
   font-weight: normal;
 }

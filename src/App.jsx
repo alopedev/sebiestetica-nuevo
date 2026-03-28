@@ -71,6 +71,7 @@ function AppContent() {
             } />
           ))}
           <Route path="/servicios" element={<Navigate to="/tratamientos" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 

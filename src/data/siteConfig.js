@@ -1,7 +1,5 @@
 export const SITE = {
-  name: 'Sebiestetica',
   url: 'https://sebiestetica.windsurf.build',
-  description: 'Centro de belleza en Reus',
 }
 
 export const PHONE = {

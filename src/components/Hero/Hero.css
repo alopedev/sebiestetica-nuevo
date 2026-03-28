@@ -3,7 +3,7 @@
   position: relative;
   width: 100%;
   background-color: var(--color-bg-light);
-  margin-top: 70px; /* Para dar espacio al header fijo */
+  margin-top: var(--header-height); /* Para dar espacio al header fijo */
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -32,13 +32,6 @@
   color: var(--color-primary);
   font-weight: 700;
   letter-spacing: -3px;
-}
-
-.logo-text sup {
-  font-size: 1.5rem;
-  vertical-align: top;
-  position: relative;
-  top: 0.5rem;
 }
 
 /* Wrapper para imagen */
@@ -73,14 +66,6 @@
   margin: 3rem auto 5rem;
   padding: 0 1rem;
   text-align: center;
-}
-
-.identity-subtitle {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--color-text-medium);
-  margin-bottom: 1.5rem;
-  letter-spacing: 1px;
 }
 
 .identity-title {
@@ -134,10 +119,6 @@
 
   .logo-text {
     font-size: 4rem;
-  }
-
-  .hero {
-    margin-top: 60px;
   }
 
   .identity-title {

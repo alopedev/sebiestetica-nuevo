@@ -54,21 +54,6 @@
   transition: all 0.3s ease;
 }
 
-.site-logo h3 {
-  font-family: 'Cooper Black', serif !important;
-  font-size: 1.3rem;
-  color: var(--color-primary);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 0;
-  padding-top: 5px;
-}
-
-/* Aplicación forzada de Cooper Black a títulos específicos */
-h1, h2, h3.site-title {
-  font-family: 'Cooper Black', 'Arial Black', serif !important;
-}
-
 .nav-links {
   display: flex;
   list-style: none;
@@ -118,17 +103,17 @@ h1, h2, h3.site-title {
   align-items: center;
 }
 
-/* Clases para diferenciar elementos móviles y desktop */
-.mobile-nav-item {
+/* Ocultar el botón de móvil en desktop */
+.mobile-menu-container {
   display: none;
 }
 
-.desktop-nav-item {
-  display: block;
+/* Ocultar elementos del menú móvil en desktop */
+.menu-cta {
+  display: none;
 }
 
-/* Ocultar el botón de móvil en desktop */
-.mobile-menu-container {
+.menu-social {
   display: none;
 }
 
@@ -157,112 +142,6 @@ h1, h2, h3.site-title {
     height: 2rem;
   }
 
-  /* Mostrar el contenedor del menú móvil solo en versión móvil */
-  .mobile-menu-container {
-    display: flex;
-    align-items: center;
-  }
-
-  .header-cta {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border-radius: 50%;
-  }
-
-  .header-cta:hover {
-    background-color: #f5c030;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  /* Estilos del menú móvil */
-  .nav-links {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem 1rem;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  /* Mejorar alineación de elementos en menú móvil */
-  .mobile-nav-item a {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem 0;
-  }
-
-  /* Intercambio de visibilidad entre elementos móviles y desktop */
-  .mobile-nav-item {
-    display: block;
-  }
-
-  .desktop-nav-item {
-    display: none;
-  }
-
-  /* Contenedor principal del menú móvil */
-  .main-nav.open {
-    background-color: #FDFBF5;
-    width: 75%;
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Estilo del CTA de WhatsApp en el menú */
-  .menu-cta {
-    display: block;
-    background-color: #25D366;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    margin: 20px auto;
-    text-align: center;
-    font-weight: 600;
-    font-size: 14px;
-    width: 85%;
-    transition: all 0.3s ease;
-  }
-
-  .menu-cta:hover {
-    background-color: #128C7E;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Estilo para iconos de redes sociales */
-  .menu-social {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
-    padding: 15px 0;
-  }
-
-  .menu-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .menu-social a:hover {
-    transform: translateY(-3px);
-  }
-
-  .menu-social svg {
-    fill: var(--color-primary);
-    transition: fill 0.3s ease;
-  }
-
-  .menu-social a:hover svg {
-    fill: var(--color-accent);
-  }
-}
-
-/* Second mobile media query block */
-@media (max-width: 768px) {
   /* Header responsive */
   .header-inner {
     position: relative;
@@ -287,6 +166,12 @@ h1, h2, h3.site-title {
     background-color: #34C759;
     color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .header-cta:hover {
+    background-color: #f5c030;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   }
 
   .mobile-menu-btn {

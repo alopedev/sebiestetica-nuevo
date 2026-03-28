@@ -90,38 +90,6 @@
   z-index: 1;
 }
 
-.google-map {
-  width: 100%;
-  height: 100%;
-}
-
-/* Segundo tono para crear efecto duotono */
-.info-icon svg path:nth-child(2),
-.info-icon svg circle:nth-child(2),
-.info-icon svg line:nth-child(2) {
-  stroke: #FFCB44; /* Color amarillo del sitio */
-  opacity: 0.7;
-}
-
-/* Estilos para la dirección en el mapa */
-.map-address {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0.8rem 1rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  border-top: 1px solid rgba(190, 155, 123, 0.1);
-}
-
-.map-address p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--color-primary);
-  font-weight: 500;
-}
-
 /* Estilos para las tarjetas de contacto basadas en feature-items */
 .contact-features {
   display: flex;
@@ -155,32 +123,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para las tarjetas de información */
-.cards-container {
-  display: none;
-}
-
-.contact-info-card {
-  display: none;
-  transform: translateY(-5px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
-  background: linear-gradient(to bottom, #ffffff, #fffbf2);
-  border-image-source: linear-gradient(to right, rgba(190, 155, 123, 0.5), rgba(212, 175, 55, 0.3), rgba(190, 155, 123, 0.5));
-}
-
-.card-decoration-line {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--color-accent, #FFCB44);
-  border-radius: 2px;
-  opacity: 0.8;
-}
-
-/* Estilo de iconos duotono inspirados en Raycast/Linear */
 /* Estilos de los iconos para feature-items de contacto */
 .feature-icon-vertical {
   width: 70px;
@@ -225,66 +167,6 @@
   filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5));
 }
 
-.info-icon {
-  width: 5rem;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle, rgba(255, 242, 225, 0.7) 0%, rgba(255, 236, 200, 0.5) 70%, rgba(255, 230, 180, 0.3) 100%);
-  border-radius: 50%;
-  margin-bottom: 2rem;
-  color: #be9b7b;
-  font-size: 1.75rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.duotone-icon {
-  position: relative;
-}
-
-.duotone-icon .icon-primary {
-  position: relative;
-  z-index: 2;
-  color: #be9b7b;
-  stroke-width: 1.2;
-  filter: drop-shadow(0 0 1px rgba(190, 155, 123, 0.3));
-}
-
-.duotone-icon .icon-secondary {
-  position: absolute;
-  z-index: 1;
-  color: #FFCB44;
-  stroke-width: 1.2;
-  opacity: 0.7;
-  transform: translate(1px, 1px);
-}
-
-.info-icon::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(255, 203, 68, 0.25), transparent 70%);
-  z-index: 1;
-}
-
-/* Eliminar estilos antiguos que ya no se usan */
-.info-icon svg path:nth-child(2),
-.info-icon svg circle:nth-child(2),
-.info-icon svg line:nth-child(2) {
-  stroke: none;
-}
-
-.info-content {
-  width: 100%;
-  text-align: center;
-}
-
 /* Estilos para los títulos y descripciones de las tarjetas */
 .feature-title {
   font-family: var(--font-heading);
@@ -304,45 +186,6 @@
   max-width: 280px;
   margin: 0 auto;
   letter-spacing: 0.01em;
-}
-
-.info-content h3 {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  font-weight: 500;
-  position: relative;
-  display: inline-block;
-  letter-spacing: 0.02em;
-}
-
-.info-content h3::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 25px;
-  height: 1px;
-  background: linear-gradient(to right, rgba(190, 155, 123, 0.7), rgba(190, 155, 123, 0.3));
-}
-
-.info-content p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text-medium);
-}
-
-.address-line {
-  margin-bottom: 0.5rem;
-}
-
-.address-province {
-  font-size: 0.9rem;
-  color: var(--color-text-medium);
-  opacity: 0.8;
 }
 
 .phone-link {
@@ -396,49 +239,6 @@
   width: 85%;
 }
 
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  border-radius: 25px;
-  width: 170px;
-  text-align: center;
-}
-
-.social-link.link-button {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
-  border: none;
-  box-shadow: none;
-}
-
-.social-icon {
-  font-size: 1rem;
-  color: var(--color-primary);
-}
-
-.social-link.link-button:hover {
-  background-color: var(--color-accent);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-}
-
-.call-time {
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-  margin-top: 0.5rem;
-  font-style: italic;
-}
-
 /* Estilos para el horario */
 .schedule-container {
   display: flex;
@@ -458,7 +258,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid rgba(190, 155, 123, 0.1);
 }
 
@@ -468,7 +268,7 @@
 
 .schedule-day {
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   color: var(--color-primary);
   letter-spacing: 0.01em;
@@ -476,25 +276,10 @@
 
 .schedule-hours {
   font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--color-text-medium);
-  letter-spacing: 0.01em;
-}
-
-/* Estilos para filas del horario */
-.schedule-row {
-  padding: 0.5rem 0;
-}
-
-.schedule-day {
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-.schedule-hours {
   font-weight: 400;
   color: var(--color-text-medium);
   font-size: 0.9rem;
+  letter-spacing: 0.01em;
 }
 
 .schedule-hours.closed {
@@ -529,21 +314,6 @@
   .map-container {
     height: 480px;
   }
-
-  .cards-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .contact-info-card {
-    flex: 1;
-    max-width: calc(50% - 1.5rem);
-  }
-
-  .info-icon {
-    width: 5.5rem;
-    height: 5.5rem;
-  }
 }
 
 @media (min-width: 992px) {
@@ -553,14 +323,6 @@
 
   .contact-title {
     font-size: 2.4rem;
-  }
-
-  .contact-info-card {
-    transition: all 0.3s ease;
-  }
-
-  .contact-info-container {
-    padding-right: 1rem;
   }
 }
 
@@ -575,23 +337,5 @@
 
   .contact-title {
     font-size: 2rem;
-  }
-
-  .cards-container {
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .contact-info-card {
-    width: 100%;
-    padding: 2rem 1.5rem;
-  }
-
-  /* Iconos más grandes en móvil para mantener impacto */
-  .info-icon {
-    width: 6rem;
-    height: 6rem;
-    font-size: 2rem;
-    margin-bottom: 1.8rem;
   }
 }
